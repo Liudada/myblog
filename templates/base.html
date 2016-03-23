@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" cotent="A layout example that show off a blog page with a list of posts.">
     <title>{% block title %}Jiashuo Liu Blog{% endblock %}</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">
-    <link rel="stylesheet" href="http://picturebag.qiniudn.com/manni.css">
+    <link rel="stylesheet" href="{% static 'pure-min.css' %}">
+    <link rel="stylesheet" href="{% static 'grids-responsive-min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog.css' %}">
+    <link rel="stylesheet" href="{% static 'manni.css' %}">
+    <link rel="stylesheet" href="{% static 'solarized_dark.min.css' %}">
+    <script src="{% static 'highlight.min.js' %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div id="layout" class="pure-g">
@@ -22,7 +27,7 @@
                         <a class="button-success pure-button" href="/">Homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="button-success pure-button" href="/">Archive</a>
+                        <a class="button-success pure-button" href="/archives">Archive</a>
                     </li>
                     <li class="nav-item">
                         <a class="pure-button" href="http://github.com/Liudada/myblog">Github</a>
@@ -34,7 +39,15 @@
                         <a class="button-success pure-button" href="/">Topics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="button-success pure-button" href="/">About Me</a>
+                        <form class="pure-form" action="search" method="get">
+                            <input class="pure-input-3-3" type="text" name="s" placeholder="search"></input>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'about_me' %}">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button-success pure-button" href="{% url 'RSS' %}">RSS</a>
                     </li>
                 </ul>
             </nav>

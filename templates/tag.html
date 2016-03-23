@@ -12,23 +12,10 @@
                 </p>
             </header>
             <div class="post-description">
-                <p>{{ post.content|custom_markdown|truncatewords:10 }}</p>
+                <p>{{ post.content|custom_markdown }}</p>
             </div>
-            <a class="pure-button" href="{% url 'detail' idx=post.id %}">Read More >>></a>
+            <a class="pure-button" href="{% url 'detail' idx=post.id %}">Read More >>> </a>
         </section>
     {% endfor %}
-
-    {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
-        <div>
-            <ul class="pager">
-                {% if post_list.has_previous %}
-                    <li><a href="?page={{ post_list.previous_page_number }}">Previous</a></li>
-                {% endif %}
-                {% if post_list.has_next %}
-                    <li><a href="?page={{ post_list.next_page_number }}">Next</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    {% endif %}
 </div>
 {% endblock %}
