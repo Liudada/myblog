@@ -5,17 +5,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" cotent="A layout example that show off a blog page with a list of posts.">
+    <meta name="description" cotent="Personal blog of liudada">
     <title>{% block title %}Jiashuo Liu Blog{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'pure-min.css' %}">
-    <link rel="stylesheet" href="{% static 'grids-responsive-min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog.css' %}">
-    <link rel="stylesheet" href="{% static 'manni.css' %}">
-    <link rel="stylesheet" href="{% static 'solarized_dark.min.css' %}">
-    <script src="{% static 'highlight.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/pure-min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grids-responsive-min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/manni.css' %}">
+    <link rel="stylesheet" href="{% static 'css/solarized_dark.min.css' %}">
+    <script src="{% static 'js/highlight.min.js' %}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    {% block extracss %}{% endblock %}
 </head>
 <body>
+{% block body %}
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
@@ -63,11 +65,13 @@
                         <li><a href="https://www.djangoproject.com">Django Project Guide</a></li>
                         <li><a href="http://www.purecss.org/">Pure Homepage</a></li>
                         <li><a href="http://github.com/yahoo/pure">Pure Github</a></li>
+                        <li><a href="{% url 'logout' %}">logout</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
 </body>
 </html>
